@@ -1,4 +1,0 @@
-assemblet
-=========
-
-Short read assembler for assembling antigenic variant sequences
