@@ -3,3 +3,17 @@ assemblet
 
 Short read assembler for assembling antigenic variant sequences.
 
+Requirements:
+
+- Python 2, version 2.6 or higher
+  (some components work much faster in PyPy)
+
+- nesoni
+  http://www.vicbioinformatics.com/software.nesoni.shtml
+
+- matplotlib 
+  (only needed for some tools)
+
+
+Example usage:
+
