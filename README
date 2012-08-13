@@ -15,5 +15,43 @@ Requirements:
   (only needed for some tools)
 
 
-Example usage:
+Example usage
+=============
+
+mkdir output
+
+
+
+nesoni clip: output/negative --match 1 --length 50 pairs: data/negative_R?.fastq.gz
+
+pypy assemblet.py new: output/negative --k 50
+
+pypy assemblet.py load: output/negative \
+    interleaved: output/negative_paired.fq.gz \
+    reads: output/negative_single.fq.gz
+
+
+
+nesoni clip: output/positive --match 1 --length 50 pairs: data/positive_R?.fastq.gz
+
+pypy assemblet.py new: output/positive --k 50
+
+pypy assemblet.py load: output/positive \
+    interleaved: output/positive_paired.fq.gz \
+    reads: output/positive_single.fq.gz
+
+
+
+pypy assemblet.py assemble: output/assembly \
+    samples: output/negative output/positive
+
+pypy assemblet.py select: output/selection output/assembly.fa data/reference.fa \
+    samples: output/negative output/positive
+
+python assemblet.py validate: output/validation output/selection.fa \
+    samples: output/negative output/positive
+
+python assemblet.py quantify: output/quantification output/selection.fa \
+    samples: output/negative output/positive
+
 
