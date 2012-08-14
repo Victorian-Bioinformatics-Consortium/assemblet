@@ -1,7 +1,12 @@
 assemblet
 =========
 
-Short read assembler for assembling antigenic variant sequences.
+Short read assembler for assembling antigenic variant sequences
+in bacteria.
+
+The input should be high-throughput sequencing reads of DNA obtained
+by PCR amplification of a small region (several kilobases) that is
+believed to undergo antigenic variation.
 
 Requirements:
 
@@ -53,5 +58,18 @@ python assemblet.py validate: output/validation output/selection.fa \
 
 python assemblet.py quantify: output/quantification output/selection.fa \
     samples: output/negative output/positive
+
+
+
+# If you have zero interest in SNPs:
+
+pypy assemblet.py assemble: --skip-snps yes \
+    output/assembly-nosnp \
+    samples: output/negative output/positive
+
+pypy assemblet.py select: --snp-weight 0.0 \
+    output/selection-nosnp output/assembly-nosnp.fa data/reference.fa \
+    samples: output/negative output/positive
+
 
 
